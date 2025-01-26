@@ -1,16 +1,24 @@
 # pythonjk
 
+Install and start Docker:
+
 sudo apt install docker.io -y
 sudo service docker start
 sudo systemctl enablr docker.service
 
-Grant sudo privileges to the Jenkins user without requiring a password: sudo visudo
-add this second last line(to give sudo permission): jenkins ALL=(ALL) NOPASSWD:ALL
+Give Jenkins sudo access without a password:
+sudo visudo
 
+add this line before the last one:(to give sudo permission): 
+jenkins ALL=(ALL) NOPASSWD:ALL
+
+restart the jenkins:
 sudo systemctl restart jenkins
 
-Add Jenkins to the docker group:  sudo usermod -aG docker jenkins
+Add Jenkins to the docker group:
+sudo usermod -aG docker jenkins
 
+Set up the Python project: 
 mkdir pythonpp
 cd pythonpp/
 python3 --version
@@ -23,6 +31,8 @@ sudo apt install python3.12-venv
 python3 -m venv venv 
 source venv/bin/activate
 pip install Flask
+
+Create necessary files:
 nano app.py
 nano Dockerfile  
 nano requirements.txt 
